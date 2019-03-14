@@ -1,0 +1,239 @@
+	<!DOCTYPE html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+	<script src="/assets/jquery.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe' rel='stylesheet' type='text/css'>
+	<style>
+	body {
+	  font-family: helvetica, sans-serif;
+	  margin: 0 auto;
+	  max-width: 600px;
+	  background:#2E8B57;
+	  text-align: center;
+	}
+	div {
+	  height: 470px;
+	  background-size: cover;
+	  position: relative;
+	  margin: 40px 0 0 0;
+	  border-radius: 12px;
+	}
+	h1 {
+	font-family: 'ZCOOL KuaiLe', cursive;
+	  text-align: center;
+	  font-size: 75px;
+	  color:#FFDE00;
+	  margin: 60px 0 0 0;
+	}
+	h2 {
+	  text-align: center;
+	  color:#DC143C;
+	  margin: 0px 0 70px 0;
+	}
+	p {
+		font-family: ' ZCOOL Kuaile',cursive;
+	  color: rgba(255, 222,0,1);
+	  background: white;
+	  background:  linear-gradient(bottom, rgba(10,20,24,1), rgba(10,20,24,.4));
+	  background: -webkit-linear-gradient(bottom, rgba(10,20,24,1), rgba(10,12,24,.4));
+	  padding: 10px;
+	  line-height: 28px;
+	  text-align: justify;
+	  position: absolute;
+	  bottom: 0;
+	  margin: 0;
+	  height: 30px;
+	  transition: height .5s;
+	  -webkit-transition: height .5s;
+	  -moz-transition: height .5s;
+	}
+	small {
+	  opacity: 0;
+	}
+	.show-description p {
+	  height: 150px;
+	}
+	.show-description small {
+	  opacity: 1;
+	}
+	.price {
+	  float: right;
+	}
+	 ul {
+	      padding: 10px;
+	      background: rgba(108,104,103,.5);
+    
+	    }
+	    li {
+	      display: inline;
+	      padding: 0px 10px 0px 10px;
+	    }
+	@media (max-width: 500px) {
+  
+	  h1 {
+	    font-size: 50px;
+	    margin-top: 20px;
+	    line-height: 40px;
+	  }
+	  h2 {
+	    font-size: 20px;
+	    margin: 20px 0 30px 0;
+	  }
+	  div {
+	    margin: 20px 12px 0 12px;
+	  }
+	  p {
+	    font-size: 20px;
+	    line-height: 24px;
+	  }
+	  small {
+	    font-size: 16px;
+	  }
+	}
+	</style>
+
+	</head>
+
+	<body>
+
+	  <ul>
+	      <li><button onclick=appetizers()>appetizers</button></li>
+	      <li><button onclick=lunch()>lunch</button></li> 
+	      <li><button onclick=dinner()>dinner</button></li>
+	      <li><button onclick=desserts()>desserts</button></li>
+	  </ul>
+    
+	<h1>Salman's Restaurant </h1>
+	<h2>A Multi-Cultural Eatery</h2>
+
+	<div id="apple"></div>
+	<script>
+	appetizersImages = [
+	           'url("https://www.tasteofhome.com/wp-content/uploads/2017/10/Appetizer-Tortilla-Pinwheels_EXPS_HCA17_8166_B12_15_4b-696x696.jpg")',
+	           'url("https://www.yummyhealthyeasy.com/wp-content/uploads/2018/06/Low-Carb-Avocado-Shrimp-Cucumber-Appetizer-Square.jpg")',
+	           'url("https://www.yummyhealthyeasy.com/wp-content/uploads/2016/05/avocado-hummus-homemade-pita-chips-square-1-600x600.jpg")',
+	           'url(https://www.yummyhealthyeasy.com/wp-content/uploads/2015/09/baked-avocado-fries-with-homemade-garlic-aioli-square-600x600.jpg)',
+	           'url("https://www.yummyhealthyeasy.com/wp-content/uploads/2017/05/Bacon-Avocado-Hash-Brown-Egg-Cups-Square-600x600.jpg")',
+	]
+	lunchImages = [
+	            'url("http://cdn.foodbeast.com/wp-content/uploads/2017/07/Artisan-chicken-sandwich-mcd.jpg")',
+	            'url("https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/33/1502918992-chick-fil-a-grilled-chicken-wrap.jpg")',
+	            'url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dennys-fit-fare-loaded-veggie-omelette-1532456145.jpg")',
+	            'url("https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/33/1600x800/landscape-1502996704-fuji-apple-chicken-salad-whole.jpg")',
+	]
+	dinnerImages = [
+	           'url("https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/33/1600x800/landscape-1502996704-fuji-apple-chicken-salad-whole.jpg")',
+	           'url("https://img1.cookinglight.timeinc.net/sites/default/files/styles/4_3_horizontal_-_900x675/public/image/2016/09/main/_1501p108-weeknight-lemon-chicken-skillet-dinner.jpg")',
+	           'url("https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/33/1600x800/landscape-1502996704-fuji-apple-chicken-salad-whole.jpg")',
+	           'url("https://hips.hearstapps.com/ghk.h-cdn.co/assets/17/33/1600x800/landscape-1502996704-fuji-apple-chicken-salad-whole.jpg")',
+	]
+	dessertsImages = [
+            'url("http://cdn.foodbeast.com/wp-content/uploads/2017/07/Artisan-chicken-sandwich-mcd.jpg")',
+            'url("https://www.cookingclassy.com/wp-content/uploads/2018/01/chocolate-covered-strawberry-cupcakes-3.jpg")',
+            'url("http://cakemerchant.com/wp-content/uploads/Peanut-Butter-Oreo-Cupcakes-8.jpg")',
+            'url("https://img.buzzfeed.com/thumbnailer-prod-us-east-1/933b399b83a7493da7738f20335a8a51/BFV8447_Cupcakes_4_Ways-FB1080.jpg")',
+	]
+	function appetizers() {
+	  storm = document.getElementById("apple")
+	  storm.innerHTML=''
+	  storm.innerHTML += appetizersDivs[0]
+	  storm.innerHTML += appetizersDivs[1]
+	  storm.innerHTML += appetizersDivs[2]
+	  storm.innerHTML += appetizersDivs[3]
+	  storm.innerHTML += appetizersDivs[4]
+	  //alert("you have picked appetizers")
+	  items = document.getElementsByClassName("item")
+	  items[0].style.background = appetizersImages[0]
+	  items[0].style.backgroundSize = '100% 100%'
+	  items[1].style.background = appetizersImages[1]
+	  items[1].style.backgroundSize = '100% 100%'
+	  items[2].style.background = appetizersImages[2]
+	  items[2].style.backgroundSize = '100% 100%'
+	  items[3].style.background = appetizersImages[3]
+	  items[3].style.backgroundSize = '100% 100%'
+	  items[4].style.background = appetizersImages[4]
+	  items[4].style.backgroundSize = '100% 100%'
+	}
+	function lunch() {
+	  storm = document.getElementById("apple")
+	  storm.innerHTML=''
+	  storm.innerHTML += lunchDivs[0]
+	  storm.innerHTML += lunchDivs[1]
+	  storm.innerHTML += lunchDivs[2]
+	  storm.innerHTML += lunchDivs[3]
+	  //alert("you have picked lunch")
+	  items = document.getElementsByClassName("item")
+	  items[0].style.background = lunchImages[0]
+	  items[0].style.backgroundSize = '100% 100%'
+	  items[1].style.background = lunchImages[1]
+	  items[1].style.backgroundSize = '110% 110%'
+	  items[2].style.background = lunchImages[2]
+	  items[2].style.backgroundSize = '100% 100%'
+	  items[3].style.background = lunchImages[3]
+	  items[3].style.backgroundSize = '100% 100%'
+	}
+	function dinner() { 
+	  storm = document.getElementById("apple")
+	  storm.innerHTML=''
+	  storm.innerHTML += dinnerDivs[0]
+	  storm.innerHTML += dinnerDivs[1]
+	  storm.innerHTML += dinnerDivs[2]
+	  storm.innerHTML += dinnerDivs[3]
+	  //alert("you have picked dinner")
+	  items = document.getElementsByClassName("item")
+	  items[0].style.background = dinnerImages[0]
+	  items[0].style.backgroundSize = '115% 115%'
+	  items[1].style.background = dinnerImages[1]
+	  items[1].style.backgroundSize = '110% 110%'
+	  items[2].style.background = dinnerImages[2]
+	  items[2].style.backgroundSize = '120% 120%'
+	  items[3].style.background = dinnerImages[3]
+	  items[3].style.backgroundSize = '100% 100%'
+	}
+	function desserts() {
+	  storm = document.getElementById("apple")
+	  storm.innerHTML=''
+	  storm.innerHTML += dessertsDivs[0]
+	  storm.innerHTML += dessertsDivs[1]
+	  //alert("you have picked desserts")
+	  items = document.getElementsByClassName("item")
+	  items[0].style.background = dessertsImages[0]
+	  items[0].style.backgroundSize = '100% 100%'
+	  items[1].style.background = dessertsImages[1]
+	  items[1].style.backgroundSize = '100% 100%'
+	}
+	appetizersDivs = [
+	  '<div class="item" onclick=this.classList.toggle("show-description")><p>Tortilla Pinwheels<span class="price">$14</span><br /><small>Very Well Made Tortilla Wheels </small></p></div>',
+  
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Avocado Shrimp Cucumber <span class="price">$22</span><br /><small>Mix Of All Crucial Vitamins Maintaing Low Carbs</small></p></div>',
+  
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Avocado Hummus W/ Pita Chips<span class="price">$8</span><br /><small>A Very Healthy Alternative of Nachos </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Avocado Fries W/ Garlic<span class="price">$8</span><br /><small>Baked Avocado Fries W/ Homemade Garlic</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>Bacon Avocado Hashbrowns W/ Egg Cups <span class="price">$8</span><br /><small>A Popular Dish that Drives Everyone Crazy</small></p></div>',
+	]
+	lunchDivs = [
+	   '<div class="item" onclick=this.classList.toggle("show-description")><p>Artisan Chicken Sandwich<span class="price">$14</span><br /><small>One of the Healthiest Alternative of a Fast-Food Sandwich </small></p></div>',
+  
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>chocolate strawberry cupcake<span class="price">$22</span><br /><small>chocolate inside and strawberry frosting on top with a chocolate covered strawberry.</small></p></div>',
+  
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>oreo cupcake<span class="price">$8</span><br /><small>chocolate inside and cookies and cream frosting in top with a oreo. </small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>vanilla cupcake<span class="price">$8</span><br /><small>vanilla inside with vanilla frosting and chocolate chips in top. </small></p></div>',
+	]
+	dinnerDivs = [
+	  '<div class="item" onclick=this.classList.toggle("show-description")><p>sugar cookies<span class="price">$14</span><br /><small>soft cookie with vanilla frosting and rainnbow sprinkles in top </small></p></div>',
+  
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>chocolate chip cookies<span class="price">$22</span><br /><small>soft cookie with chocolate chips inside.</p></div>',
+  
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>oat meal cookies <span class="price">$8</span><br /><small>soft cookie with oat meal.</small></p></div>',
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>red velvet cookies <span class="price">$8</span><br /><small>soft red velvet cookie with white chocolate chips inside.</small></p></div>',
+	]
+	dessertsDivs = [
+	  '<div class="item" onclick=this.classList.toggle("show-description")><p>sugar cookies<span class="price">$14</span><br /><small>soft cookie with vanilla frosting and rainnbow sprinkles in top </small></p></div>',
+  
+	'<div class="item" onclick=this.classList.toggle("show-description")><p>chocolate chip cookies<span class="price">$22</span><br /><small>soft cookie with chocolate chips inside.</p></div>',
+  
+	]
+  
+	</script>
+
+	</body>
